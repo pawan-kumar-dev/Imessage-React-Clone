@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Imessage from "./Imessage";
+import Imessage from "./Components/Imessage";
 
 function App() {
   return (

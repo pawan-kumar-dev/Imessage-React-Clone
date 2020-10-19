@@ -1,0 +1,48 @@
+.sidebar {
+  flex: 0.35;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid lightgray;
+  background-color: white;
+  overflow-y: auto;
+}
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Handle */
+.sidebar::-webkit-scrollbar-thumb {
+  background: lightgray;
+  border-radius: 8px;
+}
+.sidebar__header {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  height: 30px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: white;
+  border-bottom: 1px solid lightgray;
+}
+.sidebar__avatar {
+  margin: 6px;
+  cursor: pointer;
+}
+.sidebar__input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  background-color: lightgray;
+  color: gray;
+  padding: 5px;
+  border-radius: 20px;
+}
+.sidebar__input > input {
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+}
