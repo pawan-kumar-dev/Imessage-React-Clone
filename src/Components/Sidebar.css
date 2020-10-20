@@ -46,3 +46,27 @@
   outline: 0;
   background-color: transparent;
 }
+.sidebar__addChatModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar__addChatModalContainer {
+  background-color: white;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+.sidebar__addChatModalContainer button {
+  margin-top: 50px;
+  text-transform: inherit !important;
+  background-color: #3ea4fb;
+}
+.sidebar__addChatModalContainer button:hover {
+  background-color: #3ea4fb;
+}

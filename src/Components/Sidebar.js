@@ -23,7 +23,8 @@ const Sidebar = () => {
   const user = useSelector(selectUser);
   const [chat, setChat] = useState([]);
   const [open, setOpen] = useState(false);
-  const [channelName, setChannelName] = useState("");
+  const [chatName, setChatName] = useState("");
+  const [search, setSearch] = useState("");
   const handleOpen = () => {
     setOpen(true);
   };
@@ -44,14 +45,17 @@ const Sidebar = () => {
     );
   }, []);
   const addChannel = () => {
-    if (channelName) {
-      db.collection("channels").add({
-        channelName: channelName
+    if (chatName) {
+      db.collection("chats").add({
+        chatName: chatName
       });
-      setChannelName("");
+      setChatName("");
       handleClose();
     }
   };
+  const filteredChats = chat.filter(chat => {
+    return chat.data.chatName.includes(search.toLowerCase());
+  });
   return (
     <div className="sidebar">
       <Modal
@@ -63,9 +67,10 @@ const Sidebar = () => {
       >
         <Fade in={open}>
           <div className="sidebar__addChatModalContainer">
+            <h2>Add Channel</h2>
             <TextField
-              value={channelName}
-              onChange={e => setChannelName(e.target.value)}
+              value={chatName}
+              onChange={e => setChatName(e.target.value)}
               id="outlined-basic"
               label="Enter Channel Name"
               variant="outlined"
@@ -89,7 +94,12 @@ const Sidebar = () => {
 
         <div className="sidebar__input">
           <SearchIcon />
-          <input type="text" placeholder="Search" />
+          <input
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            type="text"
+            placeholder="Search"
+          />
         </div>
         <IconButton
           onClick={handleOpen}
@@ -100,7 +110,7 @@ const Sidebar = () => {
         </IconButton>
       </div>
       <div className="sidebar__chats">
-        {chat?.map(({ id, data: { chatName } }) => {
+        {filteredChats.map(({ id, data: { chatName } }) => {
           return <SidebarChat key={id} id={id} chatName={chatName} />;
         })}
       </div>
