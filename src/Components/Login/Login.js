@@ -1,7 +1,7 @@
 import React from "react";
 import "./Login.css";
 import { Button } from "@material-ui/core";
-import { auth, provider } from "./Config/firebase";
+import { auth, provider } from "../../Config/firebase";
 const Login = () => {
   const signIn = e => {
     e.preventDefault();

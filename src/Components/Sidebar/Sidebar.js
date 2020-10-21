@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import "./Sidebar.css";
 import Avatar from "@material-ui/core/Avatar";
 import SearchIcon from "@material-ui/icons/Search";
-import RateReviewOutlinedIcon from "@material-ui/icons/RateReviewOutlined";
-import { IconButton, Tooltip, TextField, Button } from "@material-ui/core";
-import SidebarChat from "./SidebarChat";
+import { Tooltip, TextField, Button } from "@material-ui/core";
+import SidebarChat from "../SidebarChat/SidebarChat";
 import { useSelector } from "react-redux";
-import { selectUser } from "../Redux/userSlice";
+import { selectUser } from "../../Redux/userSlice";
 import { withStyles } from "@material-ui/core/styles";
-import db, { auth } from "../Config/firebase";
+import db, { auth } from "../../Config/firebase";
 import Modal from "@material-ui/core/Modal";
 import Fade from "@material-ui/core/Fade";
 const LightTooltip = withStyles(theme => ({
@@ -101,13 +100,10 @@ const Sidebar = () => {
             placeholder="Search"
           />
         </div>
-        <IconButton
-          onClick={handleOpen}
-          variant="outlined"
-          className="sidebar__inputButton"
-        >
-          <RateReviewOutlinedIcon />
-        </IconButton>
+      </div>
+      <div className="sidebar__actions">
+        <Button onClick={() => auth.signOut()}>SignOut</Button>
+        <Button onClick={handleOpen}>Add Chat</Button>
       </div>
       <div className="sidebar__chats">
         {filteredChats.map(({ id, data: { chatName } }) => {

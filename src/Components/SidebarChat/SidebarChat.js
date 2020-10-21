@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./SidebarChat.css";
 import { Avatar } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { setChat } from "../Redux/chatSlice";
-import db from "../Config/firebase";
+import { setChat } from "../../Redux/chatSlice";
+import db from "../../Config/firebase";
+import * as timeago from "timeago.js";
 const SidebarChat = ({ id, chatName }) => {
   const dispatch = useDispatch();
   const [chatInfo, setChatInfo] = useState([]);
@@ -38,7 +39,9 @@ const SidebarChat = ({ id, chatName }) => {
         <p>{chatInfo[0]?.message}</p>
         <small>
           {chatInfo[0]?.timestamp
-            ? new Date(chatInfo[0]?.timestamp?.toDate()).toLocaleString()
+            ? timeago.format(
+                new Date(chatInfo[0]?.timestamp?.toDate()).toLocaleString()
+              )
             : ""}
         </small>
       </div>

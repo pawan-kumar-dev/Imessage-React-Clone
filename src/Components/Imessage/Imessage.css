@@ -1,0 +1,7 @@
+.Imessage {
+  display: flex;
+}
+
+.Imessage__swiper .MuiDrawer-paper {
+  height: unset;
+}
