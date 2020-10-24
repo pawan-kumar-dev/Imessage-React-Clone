@@ -11,7 +11,10 @@ const Message = forwardRef(
   ) => {
     const user = useSelector(selectUser);
     return (
-      <div ref={ref} className={`message ${user.email && "message__sender"}`}>
+      <div
+        ref={ref}
+        className={`message ${user.email === email && "message__sender"}`}
+      >
         <Avatar src={photo} className="message__photo" />
         <p>{message}</p>
         <small>
